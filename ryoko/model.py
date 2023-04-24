@@ -308,7 +308,7 @@ class Ryoko(L.LightningModule):
       if self.train_config is not None and self.train_config.grad_cp:
         x = deepspeed.checkpointing.checkpoint(block, x)
       else:
-        x = block(x_emb)
+        x = block(x)
 
     x = self.ln_out(x)
     x = self.head(x)
